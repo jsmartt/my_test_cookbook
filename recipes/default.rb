@@ -40,3 +40,18 @@ end
 service 'httpd' do
   action [:enable, :start]
 end
+
+include_recipe 'ohai'
+ohai 'reload_Crontab' do
+  plugin 'cron'
+  action :nothing
+end
+
+cookbook_file '/etc/chef/ohai_plugins/cron.rb' do
+  source 'plugins/cron.rb'
+  action :create
+  owner 'root'
+  group 'root'
+  mode 0644
+  notifies :reload, 'ohai[reload_Crontab]', :immediately
+end
