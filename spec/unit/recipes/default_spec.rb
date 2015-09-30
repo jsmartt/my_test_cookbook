@@ -13,7 +13,7 @@ describe 'my_test::default' do
       runner.converge(described_recipe)
     end
 
-    before do
+    before :each do
       stub_search(:strings, 'id:my_site_string').and_return([{ 'data' => 'Stubbed String' }])
     end
 
