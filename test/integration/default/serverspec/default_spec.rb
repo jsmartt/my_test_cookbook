@@ -22,8 +22,4 @@ describe 'my_test::default' do
   describe port(80) do
     it { should be_listening }
   end
-
-  # describe host('16.78.186.154') do
-  #   it { should be_reachable.with( :port => '8080') :proto => 'http'}
-  # end
 end
